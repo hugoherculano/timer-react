@@ -11,12 +11,12 @@ export interface Cycle {
   finishedDate?: Date
 }
 
-interface CycleState {
+interface CyclesState {
   cycles: Cycle[]
   activeCycleId: string | null
 }
 
-export function cyclesReducer(state: CycleState, action: any) {
+export function cyclesReducer(state: CyclesState, action: any) {
   switch (action.type) {
     case ActionTypes.ADD_NEW_CYCLE:
       return produce(state, (draft) => {
@@ -33,8 +33,8 @@ export function cyclesReducer(state: CycleState, action: any) {
       }
 
       return produce(state, (draft) => {
-        draft.cycles[currentCycleIndex].interruptedDate = new Date()
         draft.activeCycleId = null
+        draft.cycles[currentCycleIndex].interruptedDate = new Date()
       })
     }
     case ActionTypes.MARK_CURRENT_CYCLE_AS_FINISHED: {
@@ -47,8 +47,8 @@ export function cyclesReducer(state: CycleState, action: any) {
       }
 
       return produce(state, (draft) => {
-        draft.cycles[currentCycleIndex].finishedDate = new Date()
         draft.activeCycleId = null
+        draft.cycles[currentCycleIndex].finishedDate = new Date()
       })
     }
     default:
