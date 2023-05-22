@@ -2,5 +2,11 @@
   "extends": "@rocketseat/eslint-config/react",
   "rules": {
     "no-unused-vars": "off"
+  },
+  "env": {
+    "node": true
+  },
+  "globals": {
+    "NodeJS": "readonly"
   }
 }
